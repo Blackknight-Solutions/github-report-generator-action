@@ -2,7 +2,7 @@
 ## How to use
 ````
 - name: Generate reports
-        uses: wmc-dev/github-report-generator-action@latest
+        uses: Blackknight-Solutions/github-report-generator-action@latest
         with:
           input-folder: reports
           output-folder: reportsOutput
