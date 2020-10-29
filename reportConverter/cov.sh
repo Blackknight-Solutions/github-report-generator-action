@@ -5,24 +5,19 @@ SCRIPT=$(readlink -f $0)
 SCRIPTPATH=`dirname $SCRIPT`
 cd $1
 
-if [ $(find ./raw -name \*.coverage | wc -l) = 0 ]; then
+if [ $(find ./raw -name coverage.cobertura.xml | wc -l) = 0 ]; then
     echo "No coverage files were found under raw.";
     exit 0;
 fi
 
-report_assemblyfilters="-unittests.*;$(cat ./raw/.ReportGeneratorFilter 2>/dev/null)"
-
 set -e
 
 mkdir -p cov
-for i in $(find ./raw/ -name \*.coverage); do
-    "$SCRIPTPATH/cov/CodeCoverage/CodeCoverage.exe" "$i"
-    cp "$i.xml" "./cov/$(basename "$i").xml"
+for i in $(find ./raw/ -name coverage.cobertura.xml); do
+    cp "$i" "./cov/"
 done
 
-echo "report_assemblyfilters: $report_assemblyfilters"
-
-"$SCRIPTPATH/cov/ReportGenerator/ReportGenerator.exe" -reports:'./cov/*.xml' "-assemblyfilters:$report_assemblyfilters" -reporttypes:"HtmlInline;Badges" -targetdir:./cov/
+"$SCRIPTPATH/cov/ReportGenerator/ReportGenerator.exe" -reports:'./cov/*.xml' -reporttypes:"HtmlInline;Badges" -targetdir:./cov/
 
 mv cov/index.htm cov/index.html
 

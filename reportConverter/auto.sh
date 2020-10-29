@@ -2,7 +2,7 @@
 SCRIPT=$(readlink -f $0)
 SCRIPTPATH=`dirname $SCRIPT`
 
-[[ -n "$DEBUG" ]] && set -x
+[[ -n "$DEBUG" ]] && set -x || true
 set -e
 echo "Files in report raw directory"
 ls -R "$1/raw"
