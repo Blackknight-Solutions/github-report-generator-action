@@ -17,7 +17,7 @@ for i in $(find ./raw/ -name coverage.cobertura.xml); do
     cp "$i" "./cov/"
 done
 
-"$SCRIPTPATH/cov/ReportGenerator/ReportGenerator.exe" -reports:'./cov/*.xml' -reporttypes:"HtmlInline;Badges" -targetdir:./cov/
+dotnet "$SCRIPTPATH/cov/ReportGenerator/ReportGenerator.dll" -reports:'./cov/*.xml' -reporttypes:"HtmlInline;Badges" -targetdir:./cov/
 
 mv cov/index.htm cov/index.html
 
