@@ -57,6 +57,6 @@ else
 fi
 
 
-"$SCRIPTPATH/../badgen.sh" "coverage ${2::8}" "$coverage %" "$color" > "$targetPath/badge.svg"
+"$SCRIPTPATH/../badgen.sh" "coverage ${2::8}" "$coverage %" "" "$color" > "$targetPath/badge.svg"
 echo "Created coverage badge"
 echo "End node-lcov"
