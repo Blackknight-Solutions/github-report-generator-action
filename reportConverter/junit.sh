@@ -56,5 +56,5 @@ else
     color="#4c1"
 fi
 
-"$SCRIPTPATH/../badgen.sh" "tests ${2::8}" "$text" "$color" > "$targetFile"
+"$SCRIPTPATH/../badgen.sh" "tests ${2::8}" "$text" "" "$color" > "$targetFile"
 echo "End create badge from Junit"
